@@ -2,10 +2,12 @@
 import 'core-js';
 import 'regenerator-runtime/runtime';
 import ReactDOM from 'react-dom';
+// import { Provider } from 'react-redux';
 import React from 'react';
-import AppComp from './container/app';
-import Home from './components/Pages/Home';
+import AppComp from './components/Pages/Home/Banner/Banner';
+import Home from './components/Pages/Home/Banner/Menu';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import './assets/sass/Banner.scss';
 
 ReactDOM.render(
   <Router>
@@ -34,5 +36,5 @@ ReactDOM.render(
       </Route>
     </Switch>
   </Router>,
-  document.getElementById('app')
+  document.getElementById('root')
 );
