@@ -4,7 +4,7 @@ import 'regenerator-runtime/runtime';
 import ReactDOM from 'react-dom';
 import React from 'react';
 import AppComp from './container/app';
-import HomeComp from './container/home';
+import Home from './components/Pages/Home';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 ReactDOM.render(
@@ -27,7 +27,7 @@ ReactDOM.render(
         <AppComp />
       </Route>
       <Route path="/users">
-        <HomeComp />
+        <Home />
       </Route>
       <Route path="/">
         <AppComp />
