@@ -1,0 +1,36 @@
+{
+  "parser": "babel-eslint",
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "prettier",
+    "prettier/react"
+  ],
+  "settings": {
+    "react": {
+      "version": "^16.4.1"
+    }
+  },
+  "plugins": ["prettier"],
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "parserOptions": {
+      "ecmaFeatures": {
+          "experimentalObjectRestSpread": true,
+          "jsx": true
+      }
+  },
+  "rules": {
+    "prettier/prettier": [
+      "error",
+      { "singleQuote": true }
+    ],
+    "react/prop-types": 0,
+    "react/display-name": 0,
+    "no-console": 0,
+    "no-debugger": 0
+  }
+}
