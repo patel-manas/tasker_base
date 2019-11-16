@@ -49,7 +49,7 @@ class Login extends React.Component {
       <div>
         <div className="container" id="container">
           <div className="form-container sign-up-container">
-            <Form layout="vertical" onSubmit={this.handleSubmit}>
+            <Form layout="vertical" onSubmit={this.handleSubmit} id="sign-up">
               <Form.Item
                 validateStatus={usernameError ? 'error' : ''}
                 help={usernameError || ''}
@@ -147,7 +147,7 @@ class Login extends React.Component {
           <div className="overlay-container">
             <div className="overlay">
               <div className="overlay-panel overlay-left">
-                <h1>Welcome Back!</h1>
+                <h1 style={{ color: '$primary-color' }}>TasKoo Welcomes You</h1>
                 <p>
                   To keep connected with us please login with your personal info
                 </p>
@@ -156,7 +156,7 @@ class Login extends React.Component {
                 </Button>
               </div>
               <div className="overlay-panel overlay-right">
-                <h1>Hello, Friend!</h1>
+                <h1 style={{ color: '$primary-color' }}>TasKoo Welcomes You</h1>
                 <p>Enter your personal details and start journey with us</p>
                 <Button className="ghost" id="signUp" type="primary">
                   Sign Up

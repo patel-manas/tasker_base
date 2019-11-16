@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import React from 'react';
 import { BrowserRouter as Router, Switch } from 'react-router-dom';
 
-import './assets/sass/Banner.scss';
+import './assets/sass/_main.scss';
 import store from './store';
 import Home from './containers/home';
 
