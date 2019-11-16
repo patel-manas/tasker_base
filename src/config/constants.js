@@ -8,3 +8,7 @@ export const REQUEST_SUCCESS = 'REQUEST_SUCCESS';
 export const REQUEST_ERROR = 'REQUEST_ERROR';
 export const REQUEST_NOTFOUND = 'REQUEST_NOTFOUND';
 export const REQUEST_TIMEOUT = 'REQUEST_TIMEOUT';
+
+// Modal action constants
+export const SHOW_MODAL = 'SHOW_MODAL';
+export const HIDE_MODAL = 'HIDE_MODAL';

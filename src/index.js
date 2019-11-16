@@ -8,13 +8,13 @@ import { BrowserRouter as Router, Switch } from 'react-router-dom';
 
 import './assets/sass/Banner.scss';
 import store from './store';
-import Login from './components/Pages/Login/Login';
+import Home from './containers/home';
 
 ReactDOM.render(
   <Provider store={store}>
     <Router>
       <Switch>
-        <Login />
+        <Home />
       </Switch>
     </Router>
   </Provider>,

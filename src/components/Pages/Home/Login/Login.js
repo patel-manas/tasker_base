@@ -171,9 +171,15 @@ class Login extends React.Component {
 }
 
 const LoginWrapper = Form.create({ name: 'horizontal_login' })(Login);
-const Popup = () => {
+const Popup = props => {
   return (
-    <Modal className="login-modal" visible={true} footer={null} width="510">
+    <Modal
+      className="login-modal"
+      visible={props.modal.show}
+      footer={null}
+      width="510"
+      onCancel={() => props.actions.hideModal()}
+    >
       <LoginWrapper />
     </Modal>
   );
