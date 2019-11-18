@@ -1,14 +1,20 @@
 import React from 'react';
-import './Category.scss';
+import * as CategoriesData from '../../../../assets/data/category.json';
+import Category from '../Category/CategoryWrapper';
 
-export default function Category(props) {
-  return (
-    <div className="cat-wrapper">
-      {/* <div className="cat-circle circle" /> */}
-      <div className="cat-icon">
-        <img src={require(`../../../../assets/images/${props.image}`)} />
+export default class CategoryComponent extends React.Component {
+  render() {
+    return (
+      <div className="categories">
+        <div className="categories-desc">
+          Post a popular category or fresh category task
+        </div>
+        <div className="categories-list">
+          {CategoriesData.default.map(cat => (
+            <Category {...cat} key={cat.cat_id} />
+          ))}
+        </div>
       </div>
-      <div className="cat-desc">{props.name}</div>
-    </div>
-  );
+    );
+  }
 }

@@ -4,17 +4,27 @@ import 'regenerator-runtime/runtime';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import React from 'react';
-import { BrowserRouter as Router, Switch } from 'react-router-dom';
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 
 import './assets/sass/_main.scss';
 import store from './store';
-import Home from './containers/home';
+import SuspenseComponent from './components/Common/Suspense';
+import * as Routes from './containers/index';
 
 ReactDOM.render(
   <Provider store={store}>
     <Router>
       <Switch>
-        <Home />
+        <Routes.App>
+          <Switch>
+            <Route exact path="/" component={SuspenseComponent(Routes.Home)} />
+            <Route
+              exact
+              path="/tasks/:name?"
+              component={SuspenseComponent(Routes.Tasks)}
+            />
+          </Switch>
+        </Routes.App>
       </Switch>
     </Router>
   </Provider>,

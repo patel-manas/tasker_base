@@ -27,3 +27,24 @@
     }
   }
 }
+
+.categories {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
+  .categories-desc {
+    border-bottom: 1px solid $primary-bg-color-half;
+    width: 50%;
+    text-align: center;
+    padding-bottom: 20px;
+    margin-bottom: 10px;
+    font-size: 20px;
+  }
+  .categories-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

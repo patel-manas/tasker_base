@@ -3,7 +3,8 @@ import React from 'react';
 // import { Button } from 'antd';
 
 // components
-import Header from './Header/Header';
+import Category from './Category/Category';
+import Banner from './Banner/Banner';
 
 export default class Home extends React.Component {
   render() {
@@ -11,7 +12,8 @@ export default class Home extends React.Component {
       <React.Fragment>
         {/* <Button onClick={() => this.props.actions.showModal()}>Login</Button>
         {this.props.modal.show ? <Login {...this.props} /> : undefined} */}
-        <Header />
+        <Banner />
+        <Category />
       </React.Fragment>
     );
   }
