@@ -1,0 +1,37 @@
+[
+  {
+    "cat_id": "1",
+    "name": "Laundry",
+    "image": "003-washing machine.svg"
+  },
+  {
+    "cat_id": "2",
+    "name": "Salon at home",
+    "image": "006-hair dryer.svg"
+  },
+  {
+    "cat_id": "3",
+    "name": "Bring Food",
+    "image": "025-sandwich.svg"
+  },
+  {
+    "cat_id": "4",
+    "name": "AC Repaire/Install",
+    "image": "024-air conditioner.svg"
+  },
+  {
+    "cat_id": "4",
+    "name": "Build/Install Furniture",
+    "image": "030-cupboard.svg"
+  },
+  {
+    "cat_id": "5",
+    "name": "Rent/Buy House",
+    "image": "023-hotel.svg"
+  },
+  {
+    "cat_id": "6",
+    "name": "Anything Else",
+    "image": "046-newspaper.svg"
+  }
+]
