@@ -2,7 +2,7 @@ import { lazy } from 'react';
 
 import App from './App';
 
-const Home = lazy(() => import(/* webpackChunkName: "home" */ './home'));
+const Home = lazy(() => import(/* webpackChunkName: "home" */ './Home'));
 
 const Tasks = lazy(() => import(/* webpackChunkName: "product" */ './Tasks'));
 

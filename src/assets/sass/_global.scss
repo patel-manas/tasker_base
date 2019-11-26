@@ -37,6 +37,9 @@ body {
     align-items: center;
     li {
       margin: 0px 10px;
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 
@@ -60,4 +63,66 @@ body {
 
 .body {
   padding-top: calc(10vh + 20px);
+}
+
+
+.post-task {
+  .post-task-fields {
+    margin-top: 20px;
+    min-height: 340px;
+    .ant-form-item-label {
+      label {
+        font-size: 15px;
+        font-weight: 500;
+        &::after {
+          content: none;
+        }
+      }
+    }
+    .task-date {
+      .ant-calendar-picker {
+        width: 100%;
+      }
+    }
+
+    .ant-card {
+      box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 2px 1px -1px rgba(0,0,0,0.12);
+ 
+    }
+  }
+  .task-btn-grp {
+    margin-top: 20px;
+    height: 30px;
+    .task-next-btn {
+      float: right;
+    }
+  }
+
+  .ant-input-disabled {
+    color: rgba(0, 0, 0, 0.65) !important;
+    background: transparent !important;
+  }
+  .budget-multiplyer {
+    display: inline-block;
+    padding: 9px;
+    font-size: 14px;
+  }
+  .estimated-budget {
+    margin-top: 95px;
+    height: 80px;
+    padding: 12px;
+    box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 2px 1px -1px rgba(0,0,0,0.12);
+ 
+    .budget-label {
+      font-size: 20px;
+    }
+
+    .budget-amount {
+      font-size: 30px;
+      float: right;
+    }
+    .budget-helper-text {
+      color: #9d9d9d;
+    }
+  }
 }
