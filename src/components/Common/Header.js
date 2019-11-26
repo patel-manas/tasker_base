@@ -8,7 +8,7 @@ export default class Header extends Component {
       <div className="navBar">
         <nav>
           <div className="logo">
-            <a href="#">LOGO</a>
+            <Link to="/">LOGO</Link>
           </div>
           <ul className="actions">
             <li>Post Task</li>

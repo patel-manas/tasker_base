@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import TasksComponent from '../components/Pages/Tasks/ActiveTasks';
+// import TasksComponent from '../components/Pages/Tasks/ActiveTasks';
+import TasksComponent from '../components/Pages/Tasks/Tasks';
 
 export class TasksContainer extends Component {
   render() {
