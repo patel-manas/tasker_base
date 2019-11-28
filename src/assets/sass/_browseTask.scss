@@ -1,0 +1,32 @@
+.browse-task {
+  height: calc(100vh - 10vh);
+  width: 100%;
+  display: grid;
+  grid-template: 1fr / 1.5fr 2.5fr;
+  grid-template-areas: "list details";
+  .task-list {
+    grid-area: list;
+    padding: 0px 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    .cat-btn-grp {
+      button {
+        margin: 0px 5px;
+      }
+    }
+  }
+
+  .task-details {
+    grid-area: details;
+  }
+}
+
+.card-layout {
+  //   display: grid;
+  //   grid-template: (1fr 2fr 0.5fr) / (8fr 2fr);
+}
+.cyan {
+  background-color: cyan;
+}

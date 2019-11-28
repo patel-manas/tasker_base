@@ -9,8 +9,8 @@ export default class ActiveTasks extends Component {
     return (
       <FullPane>
         <Col span={5} />
-        <TaskList />
-        <TaskDetails />
+        <TaskList style={{ backgroundColor: 'red' }} />
+        <TaskDetails style={{ backgroundColor: 'green' }} />
       </FullPane>
     );
   }

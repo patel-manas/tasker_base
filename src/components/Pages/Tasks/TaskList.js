@@ -5,7 +5,13 @@ export default class TaskList extends Component {
   render() {
     return (
       <Col span={4}>
-        <div>Tasks</div>
+        <div
+          style={{
+            width: '100%'
+          }}
+        >
+          Tasks
+        </div>
       </Col>
     );
   }
