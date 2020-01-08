@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import HeaderComponent from '../components/Common/Header';
+// import HeaderComponent from '../components/Common/Header';
 import BodyComponent from '../components/Common/Body';
 import { bindActionCreators } from 'redux';
 import * as modalActions from '../actions/modalActions';
@@ -8,7 +8,7 @@ import * as modalActions from '../actions/modalActions';
 const App = props => {
   return (
     <React.Fragment>
-      <HeaderComponent {...props} />
+      {/* <HeaderComponent {...props} /> */}
       <BodyComponent {...props} />
     </React.Fragment>
   );

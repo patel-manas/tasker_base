@@ -24,10 +24,10 @@
       }
   },
   "rules": {
-    "prettier/prettier": [
-      "error",
-      { "singleQuote": true }
-    ],
+    // "prettier/prettier": [
+    //   "error",
+    //   { "singleQuote": true }
+    // ],
     "react/prop-types": 0,
     "react/display-name": 0,
     "no-console": 0,

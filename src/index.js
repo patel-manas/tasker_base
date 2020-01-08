@@ -18,6 +18,7 @@ ReactDOM.render(
         <Routes.App>
           <Switch>
             <Route exact path="/" component={SuspenseComponent(Routes.Home)} />
+            <Route exact path="/new" component={SuspenseComponent(Routes.newHome)} />
             <Route
               exact
               path="/tasks/:name?"

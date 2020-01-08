@@ -6,4 +6,6 @@ const Home = lazy(() => import(/* webpackChunkName: "home" */ './home'));
 
 const Tasks = lazy(() => import(/* webpackChunkName: "product" */ './Tasks'));
 
-export { App, Home, Tasks };
+const newHome = lazy(() => import(/* webpackChunkName: "product" */ './NewHome'));
+
+export { App, Home, Tasks, newHome };
