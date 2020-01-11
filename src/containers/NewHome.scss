@@ -95,12 +95,113 @@ $font7: 60px;
             flex-direction: column;
             align-items: center;
             padding-top: 20px;
+            padding-bottom: 20px;
             .hero_cat_desc {
                 font-size: $font1;
             }
             .hero_cat_list {
                 padding-top: 20px;
                 display: flex;
+            }
+        }
+    }
+    .lates_wrapper {
+        background-color: $medium-dark-color;
+        padding: 20px 0px;
+        .latest_header {
+            font-size: $font1;
+            padding: 20px 0px;
+            text-align: center;
+        }
+        .latest_tasks {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+    .hiw_wrapper {
+        padding: 20px 0px;
+        .hiw_header {
+            padding: 20px 0px;
+            text-align: center;
+            font-size: $font1;
+        }
+        .hiw_vieo{
+            border-radius: 15px;
+            text-align: center;
+        }
+        .hiw_types {
+            display: flex;
+            padding: 40px 0px;
+            img {
+                width: 80%;
+                height: 80%;
+            }
+            figure {
+                text-align: center;
+                figcaption {
+                    font-size: 16px;
+                }
+            }
+            .hiw_posttask, .hiw_tasker {
+                padding: 20px;
+                cursor: pointer;
+            }
+            .hiw_posttask {
+                text-align: right;
+            }
+            .hiw_tasker figcaption {
+                padding-top: 28px;
+            }
+
+        }
+    }
+
+    .foot_wrapper {
+        background-color: $medium-dark-color;
+        padding: 20px 0px;
+        display: grid;
+        grid-template-rows: 1.5fr 6.5fr 2fr;
+        grid-template-columns: 1fr 1fr 3fr;
+        grid-template-areas: 
+                "logo logo social"
+                "menu links coverpic"
+                "love app app";
+        .foot_logo {
+            grid-area: logo;
+            padding: 0;
+            img {
+                height: 30px;
+            }
+        }
+        .foot_menu_options {
+            grid-area: menu;
+            ul {
+                list-style-type: none;
+                padding: 0;
+                margin: 0;
+            }
+            .foot_menu_option {
+
+            }
+        }
+        .foot_menu_loveline {
+            grid-area: love;
+        }
+        .foot_links {
+            grid-area: links;
+        }
+        .foot_app {
+            grid-area: app;
+        }
+        .foot_social {
+            grid-area: social;
+        }
+        .foot_pic {
+            grid-area: coverpic;
+            img {
+                height: 300px;
             }
         }
     }
