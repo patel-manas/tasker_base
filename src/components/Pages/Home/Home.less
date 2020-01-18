@@ -25,6 +25,7 @@
 
 
 .home_wrapper {
+    overflow-x: hidden;
     font-family: @primary-font;
    // navbar style
     // .nav_wrapper {
@@ -160,14 +161,15 @@
 
     .foot_wrapper {
         background-color: @medium-dark-color;
-        padding: 20px 0px;
+        padding: 20px 50px;
+        height: calc(100vh * 0.6);
         display: grid;
-        grid-template-rows: 1.5fr 6.5fr 2fr;
-        grid-template-columns: 1fr 1fr 3fr;
+        grid-template-rows: 1.5fr 5.5fr 3fr;
+        grid-template-columns: 1fr 1fr 0.5fr 2.5fr;
         grid-template-areas: 
-                "logo logo social"
-                "menu links coverpic"
-                "love app app";
+                "logo logo logo social"
+                "menu links app coverpic"
+                "love love love love";
         .foot_logo {
             grid-area: logo;
             padding: 0;
@@ -177,10 +179,15 @@
         }
         .foot_menu_options {
             grid-area: menu;
+            display: flex;
+            align-items: center;
             ul {
                 list-style-type: none;
                 padding: 0;
                 margin: 0;
+                li {
+                    padding: 5px 0px;
+                }
             }
             .foot_menu_option {
 
@@ -188,18 +195,60 @@
         }
         .foot_menu_loveline {
             grid-area: love;
+            display: flex;
+            align-items: flex-end;
         }
         .foot_links {
             grid-area: links;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+            ul {
+                list-style-type: none;
+                li {
+                    font-size: 12px;
+                }
+                li:nth-child(1) {
+                    padding-top:30px;
+                    padding: 5px 0px;
+                }                
+                li:nth-child(2) {
+                    padding-bottom: 20px;
+                    padding: 5px 0px 10px 0px;
+                }
+                li:not(.regular-li) {
+                    opacity: 0.7;
+                }
+            }
         }
         .foot_app {
             grid-area: app;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            img {
+                height: 40px;
+                margin: 10px 0px;
+            }
+            
         }
         .foot_social {
             grid-area: social;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            .icon_lst {
+                padding: 0px 10px;
+                cursor: pointer;
+            }
+
         }
         .foot_pic {
             grid-area: coverpic;
+            display: flex;
+            justify-content: flex-end;
             img {
                 height: 300px;
             }
@@ -207,3 +256,92 @@
     }
 
 }
+@mobile-min-width: 320px;
+@mobile-max-width: 480px;
+
+@ipad-min-width:768px;
+@ipad-max-width: 1024px;
+@media only screen and (min-device-width: @mobile-min-width) and (max-device-width: @mobile-max-width) {
+    /* Styles */
+    .home_wrapper {
+      .hero_wrapper {
+        .hero_banner {
+          padding: 0px 50px;
+          padding-bottom: 50px;
+          height: calc(calc(100vh - 50px) * 0.65);
+          width: 100%;
+          width: 100%;
+          background-color: @medium-dark-color;
+          display: flex;
+          flex-direction: column-reverse;
+        //   justify-content: space-between;
+        //   align-items: center;
+          .hero_img {
+            img {
+            //   height: calc(calc(100vh - 50px) * 0.55);
+            // height: 30vh;
+            width: 100%;
+            transform: scale(1.3);
+            }
+          }
+          .hero_tag {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            .hero_tag_desc {
+              font-size: @font3;
+              br {
+                  display: none;
+              }
+            }
+            // .hero_tag_cta {
+            //     Button {
+            //         background-color: @primary-color;
+            //         color: @light-color;
+            //     }
+            // }
+          }
+        }
+        .hero_cat{
+            .hero_cat_list {
+                padding-top: 20px;
+                display: flex;
+                flex-wrap: wrap;
+                // justify-content: center;
+                // width: 70%;
+                .hero_cat_list_item {
+                    margin: 25px 5px;
+                }
+            }
+        }
+      }
+      .foot_wrapper {
+        display: grid;
+        grid-template-rows: 2fr 6fr 1fr 4fr 2fr 4fr;
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+                "logo"
+                "coverpic"
+                "social"
+                "menu"
+                "app"
+                "links"
+                "love";
+        .foot_pic, .foot_social {
+            justify-content: flex-start;
+        }
+        .foot_app {
+            flex-direction: row;
+            justify-content: flex-start;
+            img {
+                margin: 0px 10px;
+            }
+        }
+        .foot_links {
+            align-items: flex-start;
+        }
+      }
+    }
+  }
+  
