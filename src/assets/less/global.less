@@ -144,6 +144,60 @@ input[type=number] {
     }
   }
 
+  .rupees-btn {
+    margin-top: 4px;
+    border-radius: 0;
+  }
+
+  .progress-bar {
+    position: absolute;
+    top: 55px;
+    left: 0px;
+    height: 3px;
+    width: 100%;
+    overflow: hidden;
+    background: rgb(246, 248, 253);
+
+    &:after {
+      display: block;
+      content: " ";
+      height: 3px;
+      width: 100%;
+      background: @primary-color;
+      transition: all 0.8s ease 0s;
+    }
+
+    &.progress-bar-0 {
+      &:after {
+        transform: translateX(-80%);
+      }
+    }
+    
+    &.progress-bar-1 {
+      &:after {
+       transform: translateX(-60%);
+      }
+    }
+
+    &.progress-bar-2 {
+      &:after {
+        transform: translateX(-40%);
+      }
+    }
+
+    &.progress-bar-3 {
+      &:after {
+        transform: translateX(-20%);
+      }
+    }
+
+    &.progress-bar-4 {
+      &:after {
+        transform: translateX(0%);
+      }
+    }
+  }
+
   .post-task-fields {
     margin-top: 20px;
     min-height: 340px;

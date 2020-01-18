@@ -11,11 +11,12 @@ import {
   Card,
   Radio,
   AutoComplete,
-  Result,
+  // Result,
   InputNumber
 } from 'antd';
 import moment from 'moment';
 import QueueAnim from 'rc-queue-anim';
+import postTaks from '../../assets/images/taskPosted.svg';
 // import { isNumeric } from '../../utils';
 
 class PostTask extends Component {
@@ -308,6 +309,7 @@ class PostTask extends Component {
                 <Radio value={2}>Hourly Rate</Radio>
               </Radio.Group>
             </Form.Item>
+            {/* <Button>$</Button> */}
             <Form.Item
               key={2}
               required={false}
@@ -324,10 +326,7 @@ class PostTask extends Component {
                 ]
               })(
                 <InputNumber
-                  size="large"
                   formatter={value => '₹' + value}
-                  max={99999999}
-                  min={1}
                   onChange={value => this.handleChange('taskBudget', value)}
                 />
               )}
@@ -353,7 +352,6 @@ class PostTask extends Component {
                   })(
                     <InputNumber
                       suffix="hrs"
-                      size="large"
                       max={24}
                       min={1}
                       onChange={value =>
@@ -379,15 +377,15 @@ class PostTask extends Component {
         );
       case 4:
         return (
-          <Result
-            key={1}
-            status="success"
-            title="Successfully Posted A Task"
-            subTitle="Order number: 2017182818828182881 Task approval takes 10-15 minutes, please wait."
-            extra={[
+          <div key={1} className="get-started">
+            <img src={postTaks} />
+            <h2>Hurray !!!</h2>
+            <div>Your task has been posted and will be live in few minutes</div>
+            <div className="task-btn-grp">
               <Button type="primary" key="console" size="large">
                 Check Status
-              </Button>,
+              </Button>
+              ,
               <Button
                 size="large"
                 key="close"
@@ -395,8 +393,26 @@ class PostTask extends Component {
               >
                 Close
               </Button>
-            ]}
-          />
+            </div>
+          </div>
+          // <Result
+          //   key={1}
+          //   status="success"
+          //   title="Successfully Posted A Task"
+          //   subTitle="Order number: 2017182818828182881 Task approval takes 10-15 minutes, please wait."
+          //   extra={[
+          //     <Button type="primary" key="console" size="large">
+          //       Check Status
+          //     </Button>,
+          //     <Button
+          //       size="large"
+          //       key="close"
+          //       onClick={() => this.props.actions.hideModal()}
+          //     >
+          //       Close
+          //     </Button>
+          //   ]}
+          // />
         );
     }
   }
@@ -417,14 +433,8 @@ class PostTask extends Component {
     const { currentStep } = this.state;
     return (
       <>
-        {/* <Steps size="small" current={currentStep}>
-          <Step />
-          <Step />
-          <Step />
-          <Step />
-          <Step />
-        </Steps> */}
-
+        <div className={`progress-bar progress-bar-${currentStep}`} />
+        {/* <Progress className="progress-bar" percent={30} /> */}
         <Form className="post-task-form">
           <div key="task-post" className="post-task-fields">
             {this.getFormItems()}
@@ -434,7 +444,7 @@ class PostTask extends Component {
             {currentStep > 1 && currentStep < 4 ? (
               <Button
                 className="task-previous-btn"
-                type="primary"
+                size="large"
                 onClick={() => this.setState({ currentStep: currentStep - 1 })}
               >
                 <Icon type="left" />
@@ -445,6 +455,7 @@ class PostTask extends Component {
             )}
             {currentStep >= 0 && currentStep < 4 ? (
               <Button
+                size="large"
                 className="task-next-btn"
                 type="primary"
                 onClick={() => {
@@ -480,17 +491,19 @@ class PostTask extends Component {
   handleCancel = () => {
     const { confirm } = Modal;
     const { hideModal } = this.props.actions;
-    confirm({
-      title: 'Sorry to see you go...',
-      content:
-        "Are you sure? You're almost done and it's free to post a task...",
-      okText: 'Exit',
-      okType: 'danger',
-      cancelText: 'Continue',
-      onOk() {
-        hideModal();
-      }
-    });
+    this.state.currentStep <= 3
+      ? confirm({
+          title: 'Sorry to see you go...',
+          content:
+            "Are you sure? You're almost done and it's free to post a task...",
+          okText: 'Exit',
+          okType: 'danger',
+          cancelText: 'Continue',
+          onOk() {
+            hideModal();
+          }
+        })
+      : hideModal();
   };
   render() {
     return (
