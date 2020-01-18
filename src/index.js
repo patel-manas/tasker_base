@@ -5,8 +5,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import React from 'react';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
-
-import './assets/sass/_main.scss';
+import './assets/less/main.less';
 import store from './store';
 import SuspenseComponent from './components/Common/Suspense';
 import * as Routes from './containers/index';

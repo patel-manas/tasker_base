@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {
   Modal,
-  Steps,
   Form,
   Input,
   Button,
@@ -12,9 +11,12 @@ import {
   Card,
   Radio,
   AutoComplete,
-  Result
+  Result,
+  InputNumber
 } from 'antd';
 import moment from 'moment';
+import QueueAnim from 'rc-queue-anim';
+// import { isNumeric } from '../../utils';
 
 class PostTask extends Component {
   constructor(props) {
@@ -32,11 +34,21 @@ class PostTask extends Component {
     };
   }
 
-  handleChange(name, value) {
+  handleChange = (name, value) => {
     this.setState({
       [name]: value
     });
-  }
+  };
+
+  // handleNumericChange = (name, value) => {
+  //   debugger;
+  //   console.log(value);
+  //   const previousValue = this.state[name];
+  //   this.props.form.setFieldsValue({ [name]: previousValue });
+  //   // if (isNaN(value)) {
+
+  //   // } else this.handleChange(name, value);
+  // };
 
   onLocationSearch = searchText => {
     this.setState({
@@ -82,166 +94,203 @@ class PostTask extends Component {
     switch (currentStep) {
       case 0:
         return (
-          <div>
-            <Form.Item
-              label="What do you need done?"
-              required={false}
-              className="task-title"
-              help={
-                getFieldError('taskName')
-                  ? undefined
-                  : "This'll be the title of your task - e.g. Help move my sofa"
-              }
-            >
-              {getFieldDecorator(`taskName`, {
-                validateTrigger: ['onChange', 'onBlur'],
-                initialValue: taskName ? taskName : undefined,
-                rules: [
-                  {
-                    required: true,
-                    whitespace: true,
-                    message: 'Please input a task title'
-                  }
-                ]
-              })(
-                <Input
-                  onChange={event =>
-                    this.handleChange('taskName', event.target.value)
-                  }
-                />
-              )}
-            </Form.Item>
-
-            <Form.Item
-              label="What are the details?"
-              required={false}
-              className="task-details"
-              help={
-                getFieldError('taskDetails')
-                  ? undefined
-                  : 'Be as specific as you can about what needs doing'
-              }
-            >
-              {getFieldDecorator(`taskDetails`, {
-                validateTrigger: ['onChange', 'onBlur'],
-                initialValue: taskDetails ? taskDetails : undefined,
-                rules: [
-                  {
-                    required: true,
-                    whitespace: true,
-                    message: 'Please input a task title'
-                  }
-                ]
-              })(
-                <TextArea
-                  onChange={event =>
-                    this.handleChange('taskDetails', event.target.value)
-                  }
-                  rows={6}
-                />
-              )}
-            </Form.Item>
+          <div key={1} className="get-started">
+            <img src="https://www.airtasker.com/images/taylor/on-boarding.png" />
+            <h2>Start getting offers in no time</h2>
+            <div>
+              We&apos;re just going to ask a few questions to help you find the
+              right Tasker - it&apos;ll only take a few minutes!
+            </div>
           </div>
         );
       case 1:
         return (
-          <>
-            <Row gutter={16}>
-              <Radio.Group value={locationType}>
-                <Col span={12}>
-                  <Card
-                    title={
-                      <>
-                        <Icon
-                          style={{ fontSize: '16px' }}
-                          type="environment"
-                          theme="twoTone"
-                        />
-                        &emsp;In Person
-                      </>
-                    }
-                    extra={<Radio value={1} />}
-                    bordered={true}
-                    onClick={() => this.handleChange('locationType', 1)}
-                  >
-                    Select this if you need the Tasker physically there.
-                  </Card>
-                </Col>
-                <Col span={12}>
-                  <Card
-                    title={
-                      <>
-                        <Icon type="mobile" theme="twoTone" />
-                        &emsp;Online
-                      </>
-                    }
-                    extra={<Radio value={2} />}
-                    bordered={true}
-                    onClick={() => this.handleChange('locationType', 2)}
-                  >
-                    Select this if the Tasker can do it from home
-                  </Card>
-                </Col>
-              </Radio.Group>
-            </Row>
-            {locationType === 1 ? (
+          <div key={2}>
+            <QueueAnim
+              type={['right', 'left']}
+              ease={['easeOutQuart', 'easeInOutQuart']}
+            >
               <Form.Item
-                label="Your Location"
+                key={1}
+                label="What do you need done?"
                 required={false}
-                className="task-location"
-                // help="This'll be the title of your task - e.g. Help move my sofa"
+                className="task-title"
+                help={
+                  getFieldError('taskName')
+                  // ? undefined
+                  // : "This'll be the title of your task - e.g. Help move my sofa"
+                }
               >
-                {getFieldDecorator(`taskLocation`, {
-                  validateTrigger: ['onChange'],
-                  initialValue: taskLocation ? taskLocation : undefined,
+                {getFieldDecorator(`taskName`, {
+                  validateTrigger: ['onChange', 'onBlur'],
+                  initialValue: taskName ? taskName : undefined,
                   rules: [
                     {
                       required: true,
                       whitespace: true,
-                      message: 'Please input your location'
+                      message: 'Please input a task title'
                     }
                   ]
                 })(
-                  <AutoComplete
-                    dataSource={locationData}
-                    // onSelect={onSelect}
-                    onSearch={this.onLocationSearch}
-                    // onChange={this.onChange}
-                    placeholder="Task Location"
+                  <Input
+                    placeholder="eg: I want to move my household stuff"
+                    onChange={event =>
+                      this.handleChange('taskName', event.target.value)
+                    }
                   />
                 )}
               </Form.Item>
-            ) : (
-              undefined
-            )}
-            <Form.Item
-              label="When do you need it done?"
-              required={false}
-              className="task-date"
-              // help="This'll be the title of your task - e.g. Help move my sofa"
-            >
-              {getFieldDecorator(`taskDate`, {
-                initialValue: taskDate ? taskDate : undefined,
-                rules: [
-                  {
-                    required: true,
-                    message: 'Please input a task date'
-                  }
-                ]
-              })(
-                <DatePicker
-                  format={'DD/MM/YYYY'}
-                  onChange={date => this.handleChange('taskDate', date)}
-                  disabledDate={current => current < moment().endOf('day')}
-                />
-              )}
-            </Form.Item>
-          </>
+
+              <Form.Item
+                key={2}
+                label="Tell more about your task"
+                required={false}
+                className="task-details"
+                help={
+                  getFieldError('taskDetails')
+                  // ? undefined
+                  // : 'Be as specific as you can about what needs doing'
+                }
+              >
+                {getFieldDecorator(`taskDetails`, {
+                  validateTrigger: ['onChange', 'onBlur'],
+                  initialValue: taskDetails ? taskDetails : undefined,
+                  rules: [
+                    {
+                      required: true,
+                      whitespace: true,
+                      message: 'Please input task details'
+                    }
+                  ]
+                })(
+                  <TextArea
+                    placeholder="eg: I want to move my household stuff from Marathahalli to MG"
+                    onChange={event =>
+                      this.handleChange('taskDetails', event.target.value)
+                    }
+                    rows={6}
+                  />
+                )}
+              </Form.Item>
+            </QueueAnim>
+          </div>
         );
       case 2:
         return (
-          <>
+          <div key={3}>
+            <QueueAnim
+              type={['right', 'left']}
+              ease={['easeOutQuart', 'easeInOutQuart']}
+            >
+              <Row key={1} gutter={16}>
+                <Radio.Group value={locationType}>
+                  <Col span={12}>
+                    <Card
+                      title={
+                        <>
+                          <Icon
+                            style={{ fontSize: '16px' }}
+                            type="environment"
+                            theme="twoTone"
+                            twoToneColor="#4C45B2"
+                          />
+                          &emsp;In Person
+                        </>
+                      }
+                      extra={<Radio value={1} />}
+                      bordered={true}
+                      onClick={() => this.handleChange('locationType', 1)}
+                    >
+                      Select this if you need the Tasker physically there.
+                    </Card>
+                  </Col>
+                  <Col span={12}>
+                    <Card
+                      title={
+                        <>
+                          <Icon
+                            type="mobile"
+                            theme="twoTone"
+                            twoToneColor="#4C45B2"
+                          />
+                          &emsp;Online
+                        </>
+                      }
+                      extra={<Radio value={2} />}
+                      bordered={true}
+                      onClick={() => this.handleChange('locationType', 2)}
+                    >
+                      Select this if the Tasker can do it from home
+                    </Card>
+                  </Col>
+                </Radio.Group>
+              </Row>
+              {locationType === 1 ? (
+                <Form.Item
+                  key={2}
+                  label="Your Location"
+                  required={false}
+                  className="task-location"
+                  // help="This'll be the title of your task - e.g. Help move my sofa"
+                >
+                  {getFieldDecorator(`taskLocation`, {
+                    validateTrigger: ['onChange'],
+                    initialValue: taskLocation ? taskLocation : undefined,
+                    rules: [
+                      {
+                        required: true,
+                        whitespace: true,
+                        message: 'Please input your location'
+                      }
+                    ]
+                  })(
+                    <AutoComplete
+                      dataSource={locationData}
+                      // onSelect={onSelect}
+                      onSearch={this.onLocationSearch}
+                      // onChange={this.onChange}
+                      placeholder="Task Location"
+                    />
+                  )}
+                </Form.Item>
+              ) : (
+                undefined
+              )}
+              <Form.Item
+                key={3}
+                label="When do you need it done?"
+                required={false}
+                className="task-date"
+                // help="This'll be the title of your task - e.g. Help move my sofa"
+              >
+                {getFieldDecorator(`taskDate`, {
+                  initialValue: taskDate ? taskDate : undefined,
+                  rules: [
+                    {
+                      required: true,
+                      message: 'Please input a task date'
+                    }
+                  ]
+                })(
+                  <DatePicker
+                    format={'DD/MM/YYYY HH:mm'}
+                    showTime={{ format: 'HH:mm' }}
+                    onChange={date => this.handleChange('taskDate', date)}
+                    disabledDate={current => current < moment().endOf('day')}
+                  />
+                )}
+              </Form.Item>
+            </QueueAnim>
+          </div>
+        );
+      case 3:
+        return (
+          <QueueAnim
+            type={['right', 'left']}
+            ease={['easeOutQuart', 'easeInOutQuart']}
+          >
             <Form.Item
+              key={1}
               label="What is your budget?"
               required={false}
               className="task-title"
@@ -260,8 +309,9 @@ class PostTask extends Component {
               </Radio.Group>
             </Form.Item>
             <Form.Item
+              key={2}
               required={false}
-              style={{ display: 'inline-block', width: '30%' }}
+              style={{ display: 'inline-block' }}
             >
               {getFieldDecorator(`taskBudget`, {
                 validateTrigger: ['onChange'],
@@ -273,15 +323,12 @@ class PostTask extends Component {
                   }
                 ]
               })(
-                <Input
-                  prefix="₹"
-                  suffix={budgetType === 2 ? '/hr' : undefined}
-                  type="number"
+                <InputNumber
                   size="large"
-                  maxLength="8"
-                  onChange={event =>
-                    this.handleChange('taskBudget', event.target.value)
-                  }
+                  formatter={value => '₹' + value}
+                  max={99999999}
+                  min={1}
+                  onChange={value => this.handleChange('taskBudget', value)}
                 />
               )}
             </Form.Item>
@@ -290,8 +337,9 @@ class PostTask extends Component {
               <>
                 <span className="budget-multiplyer"> X </span>
                 <Form.Item
+                  key={3}
                   required={false}
-                  style={{ display: 'inline-block', width: '30%' }}
+                  style={{ display: 'inline-block' }}
                 >
                   {getFieldDecorator(`taskDuration`, {
                     validateTrigger: ['onChange'],
@@ -303,13 +351,13 @@ class PostTask extends Component {
                       }
                     ]
                   })(
-                    <Input
+                    <InputNumber
                       suffix="hrs"
-                      type="number"
                       size="large"
-                      maxLength="8"
-                      onChange={event =>
-                        this.handleChange('taskDuration', event.target.value)
+                      max={24}
+                      min={1}
+                      onChange={value =>
+                        this.handleChange('taskDuration', value)
                       }
                     />
                   )}
@@ -318,7 +366,7 @@ class PostTask extends Component {
             ) : (
               undefined
             )}
-            <div className="estimated-budget">
+            <div key={4} className="estimated-budget">
               <div>
                 <span className="budget-label">Estimated Budget</span>
                 <span className="budget-amount">{this.getBudgetAmount()}</span>
@@ -327,19 +375,21 @@ class PostTask extends Component {
                 Final payment will be agreed later
               </span>
             </div>
-          </>
+          </QueueAnim>
         );
-      case 3:
+      case 4:
         return (
           <Result
+            key={1}
             status="success"
             title="Successfully Posted A Task"
             subTitle="Order number: 2017182818828182881 Task approval takes 10-15 minutes, please wait."
             extra={[
-              <Button type="primary" key="console">
+              <Button type="primary" key="console" size="large">
                 Check Status
               </Button>,
               <Button
+                size="large"
                 key="close"
                 onClick={() => this.props.actions.hideModal()}
               >
@@ -355,7 +405,7 @@ class PostTask extends Component {
     const { currentStep } = this.state;
     this.props.form.validateFields(error => {
       if (!error) {
-        currentStep < 3
+        currentStep < 4
           ? this.setState({ currentStep: currentStep + 1 })
           : undefined;
       }
@@ -363,20 +413,25 @@ class PostTask extends Component {
   }
 
   getContent() {
-    const { Step } = Steps;
+    // const { Step } = Steps;
     const { currentStep } = this.state;
     return (
       <>
-        <Steps size="small" current={currentStep}>
+        {/* <Steps size="small" current={currentStep}>
           <Step />
           <Step />
           <Step />
           <Step />
-        </Steps>
+          <Step />
+        </Steps> */}
+
         <Form className="post-task-form">
-          <div className="post-task-fields">{this.getFormItems()}</div>
+          <div key="task-post" className="post-task-fields">
+            {this.getFormItems()}
+          </div>
+
           <div className="task-btn-grp">
-            {currentStep > 0 && currentStep < 3 ? (
+            {currentStep > 1 && currentStep < 4 ? (
               <Button
                 className="task-previous-btn"
                 type="primary"
@@ -388,13 +443,15 @@ class PostTask extends Component {
             ) : (
               undefined
             )}
-            {currentStep >= 0 && currentStep < 3 ? (
+            {currentStep >= 0 && currentStep < 4 ? (
               <Button
                 className="task-next-btn"
                 type="primary"
-                onClick={() => this.handleClickNext()}
+                onClick={() => {
+                  setTimeout(this.handleClickNext(), 500);
+                }}
               >
-                {currentStep === 2 ? 'Get quotes' : 'Next'}
+                {currentStep === 3 ? 'Get quotes' : 'Next'}
                 <Icon type="right" />
               </Button>
             ) : (
@@ -407,15 +464,33 @@ class PostTask extends Component {
   }
   getModalTitle = () => {
     switch (this.state.currentStep) {
-      case 0:
-        return 'Tell us what you need done?';
       case 1:
-        return 'Say where & when';
+        return 'Tell us what you need done?';
       case 2:
-        return 'Suggest how much';
+        return 'Say where & when';
       case 3:
+        return 'Suggest how much';
+      case 4:
         return 'Success';
+      default:
+        return 'Get Started';
     }
+  };
+
+  handleCancel = () => {
+    const { confirm } = Modal;
+    const { hideModal } = this.props.actions;
+    confirm({
+      title: 'Sorry to see you go...',
+      content:
+        "Are you sure? You're almost done and it's free to post a task...",
+      okText: 'Exit',
+      okType: 'danger',
+      cancelText: 'Continue',
+      onOk() {
+        hideModal();
+      }
+    });
   };
   render() {
     return (
@@ -424,7 +499,7 @@ class PostTask extends Component {
         title={this.getModalTitle()}
         visible={this.props.modal.show}
         footer={null}
-        onCancel={() => this.props.actions.hideModal()}
+        onCancel={() => this.handleCancel()}
       >
         {this.getContent()}
       </Modal>

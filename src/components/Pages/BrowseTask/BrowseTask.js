@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import TaskList from './TaskList';
 import TaskDetails from './TaskDetails';
 
-import '../../../assets/sass/_browseTask.scss';
+import '../../../assets/less/browseTask.less';
 export default class BrowseTask extends Component {
   render() {
     return (

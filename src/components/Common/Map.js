@@ -1,6 +1,6 @@
 import React from 'react';
 import mapboxgl from 'mapbox-gl';
-import '../../assets/sass/_map.scss';
+import '../../assets/less/_map.scss';
 mapboxgl.accessToken =
   'pk.eyJ1IjoicHJpdGFtMTk5NWt1bWFyIiwiYSI6ImNqdjR5YzMzODA0eTAzeXFrb3N6aHoxYnYifQ.hZPOcNiQ4cg9E5uaz1_ajQ';
 
