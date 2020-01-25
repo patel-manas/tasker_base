@@ -17,6 +17,7 @@ import {
 import moment from 'moment';
 import QueueAnim from 'rc-queue-anim';
 import postTaks from '../../assets/images/taskPosted.svg';
+import closeTask from '../../assets/images/close-post-task.svg';
 // import { isNumeric } from '../../utils';
 
 class PostTask extends Component {
@@ -31,7 +32,8 @@ class PostTask extends Component {
       taskDate: '',
       budgetType: 1,
       taskBudget: 0,
-      taskDuration: 1
+      taskDuration: 1,
+      isCloseTask: false
     };
   }
 
@@ -395,24 +397,6 @@ class PostTask extends Component {
               </Button>
             </div>
           </div>
-          // <Result
-          //   key={1}
-          //   status="success"
-          //   title="Successfully Posted A Task"
-          //   subTitle="Order number: 2017182818828182881 Task approval takes 10-15 minutes, please wait."
-          //   extra={[
-          //     <Button type="primary" key="console" size="large">
-          //       Check Status
-          //     </Button>,
-          //     <Button
-          //       size="large"
-          //       key="close"
-          //       onClick={() => this.props.actions.hideModal()}
-          //     >
-          //       Close
-          //     </Button>
-          //   ]}
-          // />
         );
     }
   }
@@ -430,18 +414,48 @@ class PostTask extends Component {
 
   getContent() {
     // const { Step } = Steps;
-    const { currentStep } = this.state;
+    const { currentStep, isCloseTask } = this.state;
     return (
       <>
         <div className={`progress-bar progress-bar-${currentStep}`} />
         {/* <Progress className="progress-bar" percent={30} /> */}
         <Form className="post-task-form">
           <div key="task-post" className="post-task-fields">
-            {this.getFormItems()}
+            {!isCloseTask ? (
+              this.getFormItems()
+            ) : (
+              <div key={1} className="get-started">
+                <h6>You can always come back and post a task</h6>
+                <img src={closeTask} className="close-task-img" />
+                <div className="task-btn-grp">
+                  <Button
+                    type="primary"
+                    key="console"
+                    size="large"
+                    onClick={() => {
+                      this.setState({
+                        isCloseTask: false
+                      });
+                    }}
+                  >
+                    Continue
+                  </Button>
+                  &emsp;
+                  <Button
+                    size="large"
+                    key="close"
+                    onClick={() => this.props.actions.hideModal()}
+                    type="danger"
+                  >
+                    Close
+                  </Button>
+                </div>
+              </div>
+            )}
           </div>
 
           <div className="task-btn-grp">
-            {currentStep > 1 && currentStep < 4 ? (
+            {currentStep > 1 && currentStep < 4 && !isCloseTask ? (
               <Button
                 className="task-previous-btn"
                 size="large"
@@ -453,7 +467,7 @@ class PostTask extends Component {
             ) : (
               undefined
             )}
-            {currentStep >= 0 && currentStep < 4 ? (
+            {currentStep >= 0 && currentStep < 4 && !isCloseTask ? (
               <Button
                 size="large"
                 className="task-next-btn"
@@ -475,6 +489,8 @@ class PostTask extends Component {
   }
   getModalTitle = () => {
     switch (this.state.currentStep) {
+      case 0:
+        return 'Get Started';
       case 1:
         return 'Tell us what you need done?';
       case 2:
@@ -484,27 +500,16 @@ class PostTask extends Component {
       case 4:
         return 'Success';
       default:
-        return 'Get Started';
+        return 'Sorry to see you go!';
     }
   };
 
   handleCancel = () => {
-    const { confirm } = Modal;
-    const { hideModal } = this.props.actions;
-    this.state.currentStep <= 3
-      ? confirm({
-          title: 'Sorry to see you go...',
-          content:
-            "Are you sure? You're almost done and it's free to post a task...",
-          okText: 'Exit',
-          okType: 'danger',
-          cancelText: 'Continue',
-          onOk() {
-            hideModal();
-          }
-        })
-      : hideModal();
+    this.setState({
+      isCloseTask: true
+    });
   };
+
   render() {
     return (
       <Modal
