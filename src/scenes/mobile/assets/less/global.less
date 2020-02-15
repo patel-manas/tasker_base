@@ -1,0 +1,285 @@
+* {
+  margin: 0;
+}
+
+body,
+html {
+  height: 100%;
+}
+
+#root,
+.body-wrapper {
+  min-height: 100%;
+  height: auto !important;
+  /* This line and the next line are not necessary unless you need IE6 support */
+  height: 100%;
+}
+/*
+*	global styles
+*/
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+}
+
+h1 {
+  font-size: 25px;
+}
+
+h1 {
+  font-size: 22px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+h5 {
+  font-size: 18px;
+}
+
+h6 {
+  font-size: 14px;
+}
+
+a {
+  &:hover {
+    color: none;
+    text-decoration: none;
+  }
+}
+
+.body {
+  margin-top: 15vw;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 15vw;
+  z-index: 999;
+  background: #fff;
+  border-bottom: 2px solid #4C45B2;
+  width: 100vw;
+  transition: 0.6s ease-in-out;
+  background-color: @light-color;
+
+    img {
+      margin: 3vw;
+      height: 8vw;
+    }
+    .anticon-menu {
+      margin: 3vw;
+      font-size: 9vw;
+      float: right;
+    }
+  
+}
+
+.footer {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  transition: .6s ease-in-out;
+  background: gray;
+  text-align: center;
+  small {
+    font-size: 4vw;
+    line-height: 35px;
+    color: #fff;
+  }
+}
+.form-label{
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.5;
+  white-space: initial;
+  color: black;
+}
+
+
+.post-task {
+  .get-started {
+    text-align: center;
+    img {
+      width: 80vw;
+    }
+  }
+
+  .ant-modal-header {
+    text-align: center;
+  }
+
+  &.ant-modal {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    max-width: 100vw;
+    margin: 0;
+    .ant-modal-content {
+      height: 100vh;
+    }
+  }
+
+  // @media (max-height: @mobile-potrait-height) {
+  //   .ant-modal-content {
+  //     min-height: 100vh;
+  //   }
+  // }
+
+  .close-task-img {
+    width: 75%;
+    height: auto;
+  }
+
+  .rupees-btn {
+    margin-top: 4px;
+    border-radius: 0;
+  }
+
+  .progress-bar {
+    position: absolute;
+    top: 55px;
+    left: 0px;
+    height: 3px;
+    width: 100%;
+    overflow: hidden;
+    background: rgb(246, 248, 253);
+
+    &:after {
+      display: block;
+      content: " ";
+      height: 3px;
+      width: 100%;
+      background: @primary-color;
+      transition: all 0.8s ease 0s;
+    }
+
+    &.progress-bar-0 {
+      &:after {
+        transform: translateX(-80%);
+      }
+    }
+    
+    &.progress-bar-1 {
+      &:after {
+       transform: translateX(-60%);
+      }
+    }
+
+    &.progress-bar-2 {
+      &:after {
+        transform: translateX(-40%);
+      }
+    }
+
+    &.progress-bar-3 {
+      &:after {
+        transform: translateX(-20%);
+      }
+    }
+
+    &.progress-bar-4 {
+      &:after {
+        transform: translateX(0%);
+      }
+    }
+  }
+
+  .post-task-fields {
+    margin-top: 20px;
+    min-height: 340px;
+    .ant-form-item-label {
+      label {
+        font-size: 15px;
+        font-weight: 500;
+        &::after {
+          content: none;
+        }
+      }
+    }
+    .task-location-switch {
+      float: right;
+      margin: 3% 0%;
+    }
+
+    .ant-modal-content {
+      min-height: initial;
+    }
+
+    .task-date {
+      .ant-calendar-picker {
+        width: 100%;
+      }
+    }
+
+    .ant-card {
+      box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 2px 1px -1px rgba(0,0,0,0.12);
+ 
+    }
+  }
+
+  .task-btn-grp {
+    position: fixed;
+    background: white;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 70px;
+    width: 100vw;
+    .task-next-btn {
+      height: 40px;
+      float: right;
+      margin: 15px;
+    }
+    .task-previous-btn {
+      height: 40px;
+      margin: 15px;
+    }
+  }
+  
+  .close-complete-btn {
+    margin-top: 50px;
+  }
+
+  .ant-input-disabled {
+    color: rgba(0, 0, 0, 0.65) ;
+    background: transparent ;
+  }
+  .budget-multiplyer {
+    display: inline-block;
+    padding: 9px;
+    font-size: 14px;
+  }
+  .estimated-budget {
+    right: 0;
+    left: 0;
+    bottom: 91px;
+    background: @secondary-color;
+    color: @light-color;
+    position: absolute;
+    padding: 12px;
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+ 
+    .budget-label {
+      font-size: 20px;
+    }
+
+    .budget-amount {
+      font-size: 30px;
+      float: right;
+    }
+    .budget-helper-text {
+      color: @light-color;
+    }
+
+  }
+}

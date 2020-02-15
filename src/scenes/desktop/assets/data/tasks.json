@@ -1,0 +1,34 @@
+[
+  {
+    "title": "find a girl for me",
+    "id": 101,
+    "location": {
+      "place": "marathali",
+      "lat": "12.953053",
+      "long": "77.648020"
+    },
+    "status": "Active",
+    "offers": [
+      {
+        "amount": 500,
+        "from": "user 2"
+      }
+    ]
+  },
+  {
+    "title": "find a boy for me",
+    "id": 102,
+    "location": {
+      "place": "domlur",
+      "lat": "12.956053",
+      "long": "77.658020"
+    },
+    "status": "Assigned",
+    "offers": [
+      {
+        "amount": 1200,
+        "from": "user 1"
+      }
+    ]
+  }
+]
